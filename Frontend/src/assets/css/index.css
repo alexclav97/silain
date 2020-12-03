@@ -1,0 +1,306 @@
+
+/* |||||||||||||||   COMPONENTE START   ||||||||||||||| */
+.contentStart{
+    margin-top: 80px;
+}
+#logoMeans{
+  color: white;
+}
+
+.silain_green{
+  background-color: #A5C80A;
+}
+
+/* .ButtonLikeLink{
+  background-color: white;
+  border: none;
+  color: #FECB00
+}
+
+.ButtonLikeLink:hover{
+  text-decoration: underline;
+  color: #F47C00;
+} */
+
+.ButtonLikeLinkSelected{
+  background-color: white;
+  border: none;
+  color: #F47C00;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.ButtonLikeLink{
+  background-color: white;
+  border: none;
+  color: #98B503
+}
+
+.ButtonLikeLink:hover{
+  text-decoration: underline;
+  color: #F47C00;
+}
+
+.bgForest_top{
+  background-image: url("forest3.jpg");
+  /* min-height: 100px; */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 1920px 1080px;
+}
+
+.bgForest_center{
+  background-image: url("rice.jpg");
+  /* min-height: 100px; */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 1920px 1080px;
+}
+
+.bgGradient{
+  background: rgb(255,255,255);
+  background: -moz-radial-gradient(circle, rgba(255,255,255,1) 43%, rgba(141,230,185,1) 77%, rgba(10,200,145,1) 100%);
+  background: -webkit-radial-gradient(circle, rgba(255,255,255,1) 43%, rgba(141,230,185,1) 77%, rgba(10,200,145,1) 100%);
+  background: radial-gradient(circle, rgba(255,255,255,1) 43%, rgba(141,230,185,1) 77%, rgba(10,200,145,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#0ac891",GradientType=1); }
+
+.ButtonLikeLinkSelected:hover{
+  text-decoration: underline;
+}
+
+/* |||||||||||||||   COMPONENTE Search   ||||||||||||||| */
+
+.navbar_silain_links{
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.silain_link{
+  top: 0px;
+  bottom: 0px;
+  height: 50px;
+  padding-top:10px ;
+}
+
+.silain_link_green:hover{
+  background-color: #65A357;
+}
+.silain_link_greenorange:hover{
+  background-color: #98B503;
+}
+.silain_link_orange:hover{
+  background-color: #EBC038;
+}
+.silain_link_yellow:hover{
+  background-color: #E7B107;
+}
+
+
+
+/* |||||||||||||||   COMPONENTE Clave y Propiedad   ||||||||||||||| */
+.searchBody{
+  background-color: white;
+  opacity: 0.94;
+  border-radius: 15px;
+  padding-top: 5px;
+  padding-right: 8.5px;
+  padding-left: 8.5px;
+  padding-bottom: 1px;
+}
+
+/* |||||||||||||||   COMPONENTE THEMAP   ||||||||||||||| */
+.leaflet-container {
+    height: 600px;
+    width: 90%;
+    margin-left: 15px;
+  }
+  
+.amapa{
+    margin-bottom: 50px;
+    background-color: white;
+  }
+
+/* Legend */
+.info {
+  padding: 6px 8px;
+  font: 14px/16px Arial, Helvetica, sans-serif;
+  background: white;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  width: 155px;
+}
+
+.legend {
+  text-align: left;
+  line-height: 22px;
+  color: #555;
+}
+
+.legend i {
+  width: 20px;
+  height: 20px;
+  float: left;
+  margin-right: 8px;
+  opacity: 0.7;
+}
+/*  */
+
+.btn_search_map{
+  background-color: rgb(199, 4, 118);
+  border-style: none;
+  border-radius: 30px;
+  font-size: 20px;
+  color: white;
+}
+
+.btn_search_map:hover{
+  background-color: rgb(113, 1, 133);
+}
+
+.btn_search_map2{
+  background-color: rgb(0, 191, 224);
+  border-style: none;
+  border-radius: 30px;
+  font-size: 20px;
+  color: white;
+}
+
+.btn_search_map2:hover{
+  background-color: rgb(0, 118, 139);
+}
+
+.btn_search_map3{
+  background-color: skyblue;
+  border-style: none;
+  border-radius: 30px;
+  font-size: 20px;
+  color: white;
+}
+
+.btn_search_map3:hover{
+  background-color: blue;
+}
+
+/* |||||||||||||||   COMPONENTE ARTICLE minimap   ||||||||||||||| */
+.leaflet-container-minimap {
+  margin-top: 15px;
+  margin-left: 0px;
+  margin-bottom: 0px;
+  height: 350px;
+  width: 100%;
+}
+
+.amapa-minimap{
+  margin-bottom: 50px;
+  background-color: white;
+}
+
+
+
+/* |||||||||||||||   COMPONENTE RESULTS TABLE   ||||||||||||||| */
+
+thead{
+  text-align: center;
+}
+
+.centerTd{
+  text-align: center;
+}
+
+.silain_green_links{
+  color: #A5C80A;
+  font-weight: bold; 
+}
+
+.silain_green_links:hover{
+  color: #7ED6A5;
+  font-weight: bold; 
+}
+
+/* |||||||||||||||   VISTA CLAVE Y PROPIEDAD  ||||||||||||||| */
+
+.icon-click{
+  cursor: pointer;
+}
+
+.datsBigger{
+  font-size: 15px;
+}
+/* 
+#inputSearcher{
+  width: 10%;
+} */
+
+/* |||||||||||||||   LOGO ANIMATION  ||||||||||||||| */
+
+@-webkit-keyframes rotating /* Safari and Chrome */ {
+  from {
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotating {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.rotating {
+  -webkit-animation: rotating 16s linear infinite;
+  -moz-animation: rotating 16s linear infinite;
+  -ms-animation: rotating 16s linear infinite;
+  -o-animation: rotating 16s linear infinite;
+  animation: rotating 16s linear infinite;
+  position: absolute;
+}
+
+/* |||||||||||||||   NAVLINKS FOR PROJECTS  ||||||||||||||| */
+
+.proLink{
+  text-decoration: none;
+  border-radius: 15px;
+  background-color: #343A40;
+  color: white;
+  font-size: 17px;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* ||||||||||||||| TRAVEL BETWEEN OBJETIVES ON PROJECT ||||||||||||||| */ 
+
+
+.diagram-component {
+  width: 1000px;
+  height: 500px;
+  border: 1px solid black;
+}
+
+/* |||||||||||||||   COMPONENTES de proyectos   ||||||||||||||| */
+.projectBody{
+  border-radius: 15px;
+  padding-top: 5px;
+  padding-right: 30px;
+  padding-left: 30px;
+  padding-bottom: 5px;
+}
