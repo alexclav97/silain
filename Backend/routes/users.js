@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const pg = require('../db/database.js').getPool();
+const { getPool } = require('../db/database.js');
 
 router.post("/register", async (req, res) => {
 
@@ -11,6 +11,7 @@ router.post("/register", async (req, res) => {
         values: [nombres, apellidos, email, pais, departamento, ciudad, institucion, ocupacion, password]
     }
     try {
+        const pg = getPool();
         const result = await pg.query(query);
         res.status(200).send({ msg: "success" });
     } catch (e) {
@@ -30,6 +31,7 @@ router.post("/login", async (req, res) => {
     }
 
     try {
+        const pg = getPool();
         const result = await pg.query(query);
         var email = result.rows[0].email;
         var role = result.rows[0].role;  
@@ -54,6 +56,7 @@ router.get("/user/:id", async (req, res) => {
         values: [id]
     }
     try {
+        const pg = getPool();
         const result = await pg.query(query);
         var id = result.rows[0];
         if (id) {
@@ -78,6 +81,7 @@ router.get("/user/des_hist/:id", async (req, res) => {
         values: [id]
     }
     try {
+        const pg = getPool();
         var hist = []
         const result = await pg.query(query);
         hist = result.rows;

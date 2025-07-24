@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  # PostgreSQL database with PostGIS
+  postgres:
+    image: postgis/postgis:13-3.1-alpine
+    container_name: silain-postgres
+    environment:
+      POSTGRES_DB: silain
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: silain_password
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./Backend/db/silain.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+      - ./init-db.sh:/docker-entrypoint-initdb.d/02-init-db.sh:ro
+    ports:
+      - "5432:5432"
+    networks:
+      - silain-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d silain"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Silain application (Frontend + Backend)
+  silain-app:
+    build: .
+    container_name: silain-app
+    ports:
+      - "3000:80"
+      - "8000:8000"
+    environment:
+      - NODE_ENV=production
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=silain
+      - DB_USER=postgres
+      - DB_PASSWORD=silain_password
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - silain-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  silain-network:
+    driver: bridge

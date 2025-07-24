@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const pg = require('../db/database.js').getPool();
+const { getPool } = require('../db/database.js');
 
 // ||||||||||||||||||||||| AUXILIARES ||||||||||||||||||||||| 
 // ------------------------------------------------------------------------------------
@@ -237,6 +237,7 @@ router.get('/', async (req, res) => {
   }
 
   try {
+    const pg = getPool();
     const result_catsubs = await pg.query(catsubs);
     const result_municipios = await pg.query(municipios);
     const result_tipos = await pg.query(tipos);
@@ -285,6 +286,7 @@ router.get('/ubication', async (req, res) => {
 
 
   try {
+    const pg = getPool();
     const result_cults = await pg.query(cults);
     const result_catsubs = await pg.query(catsubs);
     const result_tipos = await pg.query(tipos);
@@ -311,6 +313,7 @@ router.get('/onmap', async (req, res) => {
   
   const query3 = "select municipio, finca from (select * from departamento inner join municipio on iddepartamento = departamento_iddepartamento) AS foo inner join finca on foo.idmunicipio = municipio_idmunicipio order by municipio;";
   
+  const pg = getPool();
   const result = await pg.query(query);
   const result2 = await pg.query(query2);
   const result3 = await pg.query(query3);

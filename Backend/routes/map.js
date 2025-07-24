@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const pg = require('../db/database.js').getPool();
+const { getPool } = require('../db/database.js');
 
 // ||||||||||||||||||||||| AUXILIARES ||||||||||||||||||||||| 
 // ------------------------------------------------------------------------------------
@@ -151,6 +151,7 @@ router.post('/ubication_by_filter', async (req, res) => {
     var countQuery = { text: countText, values: countValues };
 
     try {
+      const pg = getPool();
       const result = await pg.query(query);
       const resultCounts = await pg.query(countQuery);
 
@@ -221,6 +222,7 @@ router.post('/getpoly', async (req, res) => {
     const { departamento, municipio, finca } = filters;
 
     try {
+      const pg = getPool();
 
       var dataDept = [];
       var dataMuni = [];
@@ -282,6 +284,7 @@ router.post('/finca_closer', async (req, res) => {
   }
 
   try {
+    const pg = getPool();
     var data = await pg.query(query);
   } catch (e) {
     console.log(e);

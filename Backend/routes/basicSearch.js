@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const pg = require('../db/database.js').getPool();
+const { getPool } = require('../db/database.js');
 
 // ||||||||||||||||||||||| AUXILIARES ||||||||||||||||||||||| 
 // ------------------------------------------------------------------------------------
@@ -99,6 +99,7 @@ router.post('/search_by_filter', async (req, res) => {
     var countQuery = {text: countText, values: countValues};
     
     try {
+      const pg = getPool();
       const result = await pg.query(query);
       const resultCounts = await pg.query(countQuery);
 

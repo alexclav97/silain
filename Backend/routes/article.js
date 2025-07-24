@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const pg = require('../db/database.js').getPool();
+const { getPool } = require('../db/database.js');
 
 // Funcion auxiliar para invertir la latitud y la longitud cuando se realiza la consulta
 function swapCoors(data) {
@@ -42,6 +42,7 @@ router.get('/get/:id', async (req, res) => {
     }
 
     try {
+        const pg = getPool();
         const result = await pg.query(query);
         var queryresults = result.rows[0];
 
@@ -79,6 +80,7 @@ router.get('/get/:id/:userid', async (req, res) => {
     }
 
     try {
+        const pg = getPool();
         const result = await pg.query(query);
         var queryresults = result.rows[0];
 
@@ -132,6 +134,7 @@ router.get('/download/:id', async (req, res) => {
     }
 
     try {
+        const pg = getPool();
         const result = await pg.query(query);
         var url = result.rows[0].url;
     } catch (e) {
@@ -159,6 +162,7 @@ router.get('/download/filename/:id', async (req, res) => {
     }
 
     try {
+        const pg = getPool();
         const result = await pg.query(query);
         var url = result.rows[0].url;
         var splitted = url.split("/");
@@ -180,6 +184,7 @@ router.post('/proposito', async (req, res) => {
     }
 
     try {
+        const pg = getPool();
         const result = await pg.query(query);
         res.status(200);
     } catch (e) {
@@ -220,6 +225,7 @@ router.post('/crear', async (req, res) => {
         let ID, subID, finID;
 
         try {
+            const pg = getPool();
             const resultID = await pg.query(queryID);
             ID = parseInt(resultID.rows[0].count) + 1;
 
@@ -254,6 +260,7 @@ router.post('/crear', async (req, res) => {
         }
 
         try {
+            const pg = getPool();
             await pg.query(queryInsertMetadato);
             await pg.query(queryInsertSub);
             await pg.query(queryInsertFin);

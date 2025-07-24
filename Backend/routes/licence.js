@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const pg = require('../db/database.js').getPool();
+const { getPool } = require('../db/database.js');
 
 router.post('/add', async (req, res) => {
 
@@ -12,6 +12,7 @@ router.post('/add', async (req, res) => {
     }
 
     try {
+        const pg = getPool();
         await pg.query(query);
         res.status(200).send({});
     } catch (e) {
