@@ -7,14 +7,14 @@ WORKDIR /app/frontend
 # Copy frontend package files
 COPY Frontend/package*.json ./
 
-# Install frontend dependencies
-RUN npm ci --only=production
+# Install frontend dependencies (including dev dependencies needed for build)
+RUN npm ci
 
 # Copy frontend source code
 COPY Frontend/ ./
 
-# Build the React application
-RUN npm run build
+# Build the React application with increased heap size
+RUN NODE_OPTIONS="--max-old-space-size=512" npm run build
 
 # Backend build stage
 FROM node:16-alpine AS backend-build
