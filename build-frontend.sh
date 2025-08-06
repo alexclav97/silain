@@ -13,7 +13,7 @@ fi
 
 # Build the React app
 echo "Building React app..."
-NODE_OPTIONS="--max-old-space-size=4096" npm run build
+NODE_OPTIONS="--max-old-space-size=4096 --openssl-legacy-provider" npm run build
 
 # Check if build was successful
 if [ -d "build" ]; then
