@@ -1,13 +1,5 @@
-# Alternative Dockerfile for pre-built React app
-# Use this if you build the React app locally first
-
-FROM nginx:alpine
-
-# Copy pre-built React files (built locally)
-COPY Frontend/build /usr/share/nginx/html
-
-# Copy nginx configuration
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Optimized Dockerfile for pre-built React app
+# Use this when React app is already built locally
 
 # Backend build stage
 FROM node:16-alpine AS backend-build
@@ -18,37 +10,43 @@ WORKDIR /app/backend
 # Copy backend package files
 COPY Backend/package*.json ./
 
-# Install backend dependencies
+# Install backend dependencies (production only)
 RUN npm ci --only=production
 
 # Copy backend source code
 COPY Backend/ ./
 
-# Final stage - Production
-FROM node:16-alpine
+# Final stage - Production with nginx
+FROM nginx:alpine
 
-# Install nginx
-RUN apk add --no-cache nginx
+# Install Node.js for backend
+RUN apk add --no-cache nodejs npm
+
+# Create app directory
+WORKDIR /app
 
 # Copy backend from build stage
-WORKDIR /app
 COPY --from=backend-build /app/backend ./backend
 
-# Copy frontend build files
-COPY --from=0 /usr/share/nginx/html /usr/share/nginx/html
+# Copy pre-built React files
+COPY Frontend/build /usr/share/nginx/html
 
 # Copy nginx configuration
-COPY --from=0 /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Create nginx run directory
 RUN mkdir -p /run/nginx
 
-# Create start script
+# Create startup script
 RUN echo '#!/bin/sh' > /start.sh && \
-    echo 'nginx &' >> /start.sh && \
+    echo 'echo "Starting nginx..."' >> /start.sh && \
+    echo 'nginx -g "daemon off;" &' >> /start.sh && \
+    echo 'echo "Starting backend..."' >> /start.sh && \
     echo 'cd /app/backend && npm start' >> /start.sh && \
     chmod +x /start.sh
 
+# Expose port
 EXPOSE 80
 
+# Start both services
 CMD ["/start.sh"]
