@@ -1,0 +1,55 @@
+# Git
+.git
+.gitignore
+
+# Documentation
+README.md
+CHANGELOG.md
+
+# Dependencies
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage
+
+# nyc test coverage
+.nyc_output
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Note: Frontend/build is NOT excluded for prebuilt deployments
+# Frontend/dist is still excluded as it's not used
+
+# Docker files (avoid recursion)
+Dockerfile
+docker-compose.yml
+docker-compose.*.yml
+!docker-compose.prebuilt.yml

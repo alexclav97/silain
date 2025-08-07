@@ -42,7 +42,7 @@ RUN echo '#!/bin/sh' > /start.sh && \
     echo 'echo "Starting nginx..."' >> /start.sh && \
     echo 'nginx -g "daemon off;" &' >> /start.sh && \
     echo 'echo "Starting backend..."' >> /start.sh && \
-    echo 'cd /app/backend && npm start' >> /start.sh && \
+    echo 'cd /app/backend && node index.js' >> /start.sh && \
     chmod +x /start.sh
 
 # Expose port

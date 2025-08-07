@@ -12,7 +12,7 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./Backend/db/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
+      - ./init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
       - ./Backend/db/silain.sql:/docker-entrypoint-initdb.d/silain.sql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres -d silain"]
