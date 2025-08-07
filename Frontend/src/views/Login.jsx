@@ -118,7 +118,7 @@ class Login extends React.Component {
 
                                 <center>
                                     <ReCAPTCHA
-                                        sitekey="6LfP99wUAAAAAPHZbEWQ8x6fXjgBkasCd4ztoqL8"
+                                        sitekey="6LdV1toZAAAAAJ51BY1Op_Xxe2UdR9uPTry_cvu9"
                                         onChange={this.onChange}
                                     />
                                 </center>
