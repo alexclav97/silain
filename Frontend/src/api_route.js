@@ -1,4 +1,5 @@
 // var api = { route: "https://699f42a797af.ngrok.io/" };
-var api = { route: "http://localhost:3000/api" };
+// Use relative URL that works on any server (localhost, remote IP, domain)
+var api = { route: "/api" };
 
 export default api;
